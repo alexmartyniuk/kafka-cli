@@ -88,7 +88,8 @@ namespace Scania.Kafka.Tool.Cli.Kafka
 
         public static void ReceivedMessage(
             string topicName, 
-            string consumerGroupId, 
+            string consumerGroupId,
+            bool commit,
             Action<string, string> messageHandler, 
             Action<string> errorHandler)
         {
@@ -98,7 +99,8 @@ namespace Scania.Kafka.Tool.Cli.Kafka
             {
                 GroupId = consumerGroupId,
                 BootstrapServers = config.BrokerHost,
-                AutoOffsetReset = AutoOffsetReset.Earliest
+                AutoOffsetReset = AutoOffsetReset.Earliest,
+                EnableAutoCommit = commit
             };
 
             using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())

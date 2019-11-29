@@ -23,16 +23,19 @@ namespace Scania.Kafka.Tool.Cli.Message
         [Option("-fm|--forgetme", Description = "Group ID")]
         public bool ForgetMe { get; } = false;
 
+        [Option("-c|--commit", Description = "Commit the message. This prevents from receiving the same message twice for the one Group ID.")]
+        public bool Commit { get; } = false;
+
         private async Task<int> OnExecute(IConsole console)
         {
             var config = ConfigService.Get();
 
             var consumerGroupId = ForgetMe ?
-                GroupId + "-" + Guid.NewGuid().ToString():
+                GroupId + "-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss"):
                 GroupId;
 
             console.WriteLine($"Waiting for messages in {TopicName}:");
-            KafkaClient.ReceivedMessage(TopicName, consumerGroupId, (string topicInfo, string message) =>
+            KafkaClient.ReceivedMessage(TopicName, consumerGroupId, Commit, (string topicInfo, string message) =>
             {
                 console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss.ff")}] at {topicInfo}: {message}");
             },
