@@ -18,14 +18,18 @@ namespace Scania.Kafka.Tool.Cli.Message
         public string TopicName { get; }
 
         [Option("-g|--group", Description = "Group ID")]
-        public string GroupId { get; }
+        public string GroupId { get; } = "kafka-cli";
+
+        [Option("-fm|--forgetme", Description = "Group ID")]
+        public bool ForgetMe { get; } = false;
 
         private async Task<int> OnExecute(IConsole console)
         {
             var config = ConfigService.Get();
-            var consumerGroupId = !string.IsNullOrWhiteSpace(GroupId) ?
-                 GroupId :
-                 Guid.NewGuid().ToString();
+
+            var consumerGroupId = ForgetMe ?
+                GroupId + "-" + Guid.NewGuid().ToString():
+                GroupId;
 
             console.WriteLine($"Waiting for messages in {TopicName}:");
             KafkaClient.ReceivedMessage(TopicName, consumerGroupId, (string topicInfo, string message) =>
