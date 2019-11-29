@@ -35,6 +35,7 @@ namespace Scania.Kafka.Tool.Cli.Message
                 GroupId;
 
             console.WriteLine($"Waiting for messages in {TopicName}:");
+            
             KafkaClient.ReceivedMessage(TopicName, consumerGroupId, Commit, (string topicInfo, string message) =>
             {
                 console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss.ff")}] at {topicInfo}: {message}");
