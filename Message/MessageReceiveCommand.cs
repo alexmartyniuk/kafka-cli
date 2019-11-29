@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
 using Scania.Kafka.Tool.Cli.Config;
@@ -26,26 +27,33 @@ namespace Scania.Kafka.Tool.Cli.Message
         [Option("-c|--commit", Description = "Commit the message. This prevents from receiving the same message twice for the one Group ID.")]
         public bool Commit { get; } = false;
 
+        [Option("-p|--pause", Description = "Pause between sending in milliseconds")]
+        public int Pause { get; } = 0;
+
         private async Task<int> OnExecute(IConsole console)
         {
             var config = ConfigService.Get();
 
             var consumerGroupId = ForgetMe ?
-                GroupId + "-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss"):
+                GroupId + "-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") :
                 GroupId;
 
             console.WriteLine($"Waiting for messages in {TopicName}:");
-            
+
             KafkaClient.ReceivedMessage(TopicName, consumerGroupId, Commit, (string topicInfo, string message) =>
             {
                 console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss.ff")}] at {topicInfo}: {message}");
+                if (Pause > 0)
+                {
+                    Thread.Sleep(Pause);
+                }
             },
-            (string error) => 
+            (string error) =>
             {
                 console.WriteLine($"Error occured: {error}");
             });
 
             return await Task.FromResult(0);
-        }        
+        }
     }
 }

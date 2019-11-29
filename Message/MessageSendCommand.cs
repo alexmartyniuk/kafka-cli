@@ -33,13 +33,14 @@ namespace Scania.Kafka.Tool.Cli.Message
             try
             {
                 for(var i = 1; i <= Number; i++)
-                {                    
+                {                                        
+                    var topicInfo = await KafkaClient.SendMessageAsync(TopicName, Message);
+                    console.WriteLine($"{i} message delivered to {topicInfo}");
+
                     if (Pause > 0)
                     {
                         Thread.Sleep(Pause);
                     }
-                    var topicInfo = await KafkaClient.SendMessageAsync(TopicName, Message);
-                    console.WriteLine($"{i} message delivered to {topicInfo}");
                 }                            
                 
                 return await Task.FromResult(0);
