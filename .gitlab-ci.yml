@@ -10,5 +10,5 @@ build:
     stage: build
     script:
         - "dotnet build"
-	- "dotnet pack"
-	- "dotnet nuget push .\nupkg\*.nupkg -s nuget.org -k oy2mjbou2qk57u4ex3wagdbecpu7hr7evaf24m7s5f62jq"
+	    - "dotnet pack"
+	    - "dotnet nuget push .\nupkg\*.nupkg -s nuget.org -k oy2mjbou2qk57u4ex3wagdbecpu7hr7evaf24m7s5f62jq"
