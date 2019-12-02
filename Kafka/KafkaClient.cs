@@ -62,7 +62,7 @@ namespace Scania.Kafka.Tool.Cli.Kafka
             }
         }
 
-        public static async Task<string> SendMessageAsync(string topicName, string message)
+        public static async Task<string> ProduceMessageAsync(string topicName, string message)
         {
             var config = ConfigService.Get();
 
@@ -86,7 +86,7 @@ namespace Scania.Kafka.Tool.Cli.Kafka
             }
         }
 
-        public static void ReceivedMessage(
+        public static void ConsumeMessage(
             string topicName, 
             string consumerGroupId,
             bool commit,

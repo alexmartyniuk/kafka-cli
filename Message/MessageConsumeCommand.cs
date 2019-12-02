@@ -9,10 +9,10 @@ using Scania.Kafka.Tool.Cli.Kafka;
 namespace Scania.Kafka.Tool.Cli.Message
 {
 
-    [Command("receive", Description = "Receive a message",
+    [Command("consume", Description = "Consume a message",
             AllowArgumentSeparator = true,
             ThrowOnUnexpectedArgument = false)]
-    public class MessageReceiveCommand
+    public class MessageConsumeCommand
     {
         [Required(ErrorMessage = "You must specify the topic")]
         [Option("-t|--topic", Description = "Topic name")]
@@ -27,7 +27,7 @@ namespace Scania.Kafka.Tool.Cli.Message
         [Option("-c|--commit", Description = "Commit the message. This prevents from receiving the same message twice for the one Group ID.")]
         public bool Commit { get; } = false;
 
-        [Option("-p|--pause", Description = "Pause between sending in milliseconds")]
+        [Option("-p|--pause", Description = "Pause between producing messages in milliseconds")]
         public int Pause { get; } = 0;
 
         private async Task<int> OnExecute(IConsole console)
@@ -40,7 +40,7 @@ namespace Scania.Kafka.Tool.Cli.Message
 
             console.WriteLine($"Waiting for messages in {TopicName}:");
 
-            KafkaClient.ReceivedMessage(TopicName, consumerGroupId, Commit, (string topicInfo, string message) =>
+            KafkaClient.ConsumeMessage(TopicName, consumerGroupId, Commit, (string topicInfo, string message) =>
             {
                 console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss.ff")}] at {topicInfo}: {message}");
                 if (Pause > 0)

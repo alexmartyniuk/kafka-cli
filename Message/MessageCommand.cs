@@ -2,9 +2,9 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace Scania.Kafka.Tool.Cli.Message
 {    
-    [Command("message", Description = "Send and receive messages"),
-     Subcommand(typeof(MessageSendCommand)),
-     Subcommand(typeof(MessageReceiveCommand))]
+    [Command("message", Description = "Produce and consume messages"),
+     Subcommand(typeof(MessageProduceCommand)),
+     Subcommand(typeof(MessageConsumeCommand))]
     public class MessageCommand
     {
         private int OnExecute(IConsole console)

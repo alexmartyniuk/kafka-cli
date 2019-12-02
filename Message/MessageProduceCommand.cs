@@ -8,13 +8,13 @@ using Scania.Kafka.Tool.Cli.Kafka;
 namespace Scania.Kafka.Tool.Cli.Message
 {
 
-    [Command("send", Description = "Send a message",
+    [Command("produce", Description = "Prodcue a message to the Kafka topic",
             AllowArgumentSeparator = true,
             ThrowOnUnexpectedArgument = false)]
-    public class MessageSendCommand
+    public class MessageProduceCommand
     {
         [Required(ErrorMessage = "You must specify the message")]
-        [Argument(0, Description = "Text message to send")]
+        [Argument(0, Description = "Text message to produce")]
         public string Message { get; }
 
         [Required(ErrorMessage = "You must specify the topic")]
@@ -22,10 +22,10 @@ namespace Scania.Kafka.Tool.Cli.Message
         public string TopicName { get; }
 
 
-        [Option("-n|--number", Description = "Number of messages that should be send")]
+        [Option("-n|--number", Description = "Number of messages that should be produced")]
         public int Number { get; } = 1;
 
-        [Option("-p|--pause", Description = "Pause between sending in milliseconds")]
+        [Option("-p|--pause", Description = "Pause between producing messages in milliseconds")]
         public int Pause { get; } = 0;
 
         private async Task<int> OnExecute(IConsole console)
@@ -34,7 +34,7 @@ namespace Scania.Kafka.Tool.Cli.Message
             {
                 for(var i = 1; i <= Number; i++)
                 {                                        
-                    var topicInfo = await KafkaClient.SendMessageAsync(TopicName, Message);
+                    var topicInfo = await KafkaClient.ProduceMessageAsync(TopicName, Message);
                     console.WriteLine($"{i} message delivered to {topicInfo}");
 
                     if (Pause > 0)

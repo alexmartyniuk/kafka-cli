@@ -1,6 +1,6 @@
 # Kafka Command Line Tool
 
-Kafka Command Line Tool (kafka-cli) allows you to manage topics and send/receive messages.
+Kafka Command Line Tool (kafka-cli) allows you to manage topics and produce/consume messages to/from Kafka cluster.
 
 Usage: kafka-cli [command] [options]
 
