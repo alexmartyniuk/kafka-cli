@@ -11,7 +11,7 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageId>kafka-cli</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>aleksander.martyniuk@scania.com</Authors>
     <Company>Scania</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
