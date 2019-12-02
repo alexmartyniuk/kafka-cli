@@ -3,7 +3,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace Scania.Kafka.Tool.Cli.Topic
 {
     [Command("topic", Description = "Manage topics"),
-     Subcommand(typeof(TopicAddCommand)),
+     Subcommand(typeof(TopicCreateCommand)),
      Subcommand(typeof(TopicDeleteCommand)),
      Subcommand(typeof(TopicListCommand))]
     public class TopicCommand

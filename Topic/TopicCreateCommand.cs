@@ -7,27 +7,29 @@ using Scania.Kafka.Tool.Cli.Kafka;
 namespace Scania.Kafka.Tool.Cli.Topic
 {
 
-    [Command("delete", Description = "Delete a topic",
-            AllowArgumentSeparator = true)]
-    public class TopicDeleteCommand
+    [Command("create", Description = "Create Topic"), HelpOption]
+    public class TopicCreateCommand
     {
         [Required(ErrorMessage = "You must specify a topic name")]
         [Option("-t|--topic", Description = "Topic name")]
         public string TopicName { get; }
+        
+        [Option("-p|--partitions", Description = "Number of partitions")]
+        public int Partitions { get; } = 1;
 
         private async Task<int> OnExecute(IConsole console)
         {
             try
             {                
-                await KafkaClient.DeleteTopicAsync(TopicName);
-                console.WriteLine($"Topic '{TopicName}' was deleted.");
+                await KafkaClient.CreateTopicAsync(TopicName, Partitions);
+                console.WriteLine($"Topic '{TopicName}' was created.");
                 return await Task.FromResult(0);
             }
             catch (Exception e)
             {
-                console.WriteLine($"An error occured deleting topic '{TopicName}': {e.Message}");
+                console.WriteLine($"An error occured created topic '{TopicName}': {e.Message}");
                 return await Task.FromResult(1);
             }
-        }     
+        }
     }
 }

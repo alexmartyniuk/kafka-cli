@@ -33,6 +33,30 @@ namespace Scania.Kafka.Tool.Cli.Kafka
             }
         }
 
+        public static async Task CreateTopicAsync(string topicName, int partitions)
+        {
+            var config = ConfigService.Get();
+
+            using (var adminClient = new AdminClientBuilder(new AdminClientConfig
+            {
+                BootstrapServers = config.BrokerHost,
+                SocketTimeoutMs = config.TimeoutInMs
+            })
+            .Build())
+            {
+                try
+                {
+                    await adminClient.CreateTopicsAsync(new TopicSpecification[] { 
+                        new TopicSpecification { Name = topicName, ReplicationFactor = 1, NumPartitions = partitions } });
+
+                }
+                catch (CreateTopicsException e)
+                {
+                    throw new Exception($"{e.Results[0].Error.Reason}");
+                }
+            }
+        }
+
         public static IEnumerable<string> ListTopics(string filter = "")
         {
             var config = ConfigService.Get();
