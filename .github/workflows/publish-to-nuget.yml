@@ -23,7 +23,5 @@ jobs:
       run: dotnet build
     - name: Pack
       run: dotnet pack
-    - name: Change directory
-      run: cd nupkg
     - name: Push      
-      run: dotnet nuget push *.nupkg -s nuget.org -k ${{ secrets.NUGET_API_KEY }} 
+      run: dotnet nuget push nupkg/*.nupkg -s nuget.org -k ${{ secrets.NUGET_API_KEY }} 
