@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
-using Scania.Kafka.Tool.Cli.Config;
-using Scania.Kafka.Tool.Cli.Kafka;
+using Kafka.Tool.Cli.Config;
+using Kafka.Tool.Cli.Kafka;
 
-namespace Scania.Kafka.Tool.Cli.Message
+namespace Kafka.Tool.Cli.Message
 {
 
     [Command("consume", Description = "Consume a message",

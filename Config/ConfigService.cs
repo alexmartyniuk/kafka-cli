@@ -3,7 +3,7 @@ using System.IO;
 using IniParser;
 using IniParser.Model;
 
-namespace Scania.Kafka.Tool.Cli.Config
+namespace Kafka.Tool.Cli.Config
 {
     public static class ConfigService
     {

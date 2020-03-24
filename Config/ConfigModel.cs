@@ -1,4 +1,4 @@
-namespace Scania.Kafka.Tool.Cli.Config
+namespace Kafka.Tool.Cli.Config
 {
     public class ConfigModel
     {

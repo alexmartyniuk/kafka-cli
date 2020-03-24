@@ -1,8 +1,8 @@
 ﻿using System;
 using McMaster.Extensions.CommandLineUtils;
-using Scania.Kafka.Tool.Cli.Kafka;
+using Kafka.Tool.Cli.Kafka;
 
-namespace Scania.Kafka.Tool.Cli
+namespace Kafka.Tool.Cli
 {
     class Program
     {

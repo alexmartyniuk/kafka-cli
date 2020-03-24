@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RootNamespace>Scania.Kafka.Tool.Cli</RootNamespace>
+    <RootNamespace>Kafka.Tool.Cli</RootNamespace>
     <LangVersion>latest</LangVersion>
     <AssemblyName>kafka-cli</AssemblyName>
     <PackAsTool>true</PackAsTool>
@@ -11,9 +11,8 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageId>kafka-cli</PackageId>
-    <Version>1.0.5</Version>
-    <Authors>aleksander.martyniuk@scania.com</Authors>
-    <Company>Scania</Company>
+    <Version>1.0.6</Version>
+    <Authors>alexander.martyniuk@gmail.com</Authors>    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

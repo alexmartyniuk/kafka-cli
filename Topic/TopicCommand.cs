@@ -1,6 +1,6 @@
 using McMaster.Extensions.CommandLineUtils;
 
-namespace Scania.Kafka.Tool.Cli.Topic
+namespace Kafka.Tool.Cli.Topic
 {
     [Command("topic", Description = "Manage topics"),
      Subcommand(typeof(TopicCreateCommand)),

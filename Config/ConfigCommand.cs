@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace Scania.Kafka.Tool.Cli.Config
+namespace Kafka.Tool.Cli.Config
 {
     [Command("config", Description = "Configure Kafka CLI")]
     public class ConfigCommand

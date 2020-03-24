@@ -2,9 +2,9 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
-using Scania.Kafka.Tool.Cli.Kafka;
+using Kafka.Tool.Cli.Kafka;
 
-namespace Scania.Kafka.Tool.Cli.Topic
+namespace Kafka.Tool.Cli.Topic
 {
 
     [Command("delete", Description = "Delete a topic",

@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
-using Scania.Kafka.Tool.Cli.Kafka;
+using Kafka.Tool.Cli.Kafka;
 
-namespace Scania.Kafka.Tool.Cli.Topic
+namespace Kafka.Tool.Cli.Topic
 {
 
     [Command("list", Description = "List add topics",

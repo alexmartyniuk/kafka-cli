@@ -1,6 +1,6 @@
 using McMaster.Extensions.CommandLineUtils;
 
-namespace Scania.Kafka.Tool.Cli.Message
+namespace Kafka.Tool.Cli.Message
 {    
     [Command("message", Description = "Produce and consume messages"),
      Subcommand(typeof(MessageProduceCommand)),

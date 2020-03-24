@@ -5,9 +5,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 using Confluent.Kafka.Admin;
-using Scania.Kafka.Tool.Cli.Config;
+using Kafka.Tool.Cli.Config;
 
-namespace Scania.Kafka.Tool.Cli.Kafka
+namespace Kafka.Tool.Cli.Kafka
 {
     public static class KafkaClient
     {
