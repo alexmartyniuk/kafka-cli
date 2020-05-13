@@ -26,7 +26,7 @@ To proceed with this manual you need to have Docker Desktop installed version 1.
 You need at least 4096 MB available for Docker to run Kafka. Change this in Advanced Settings of Docker Desktop.
 
 ## Step 2 Run Kafka
-In the folder run from command line:
+Checkout the repository to some folder and run from command line in the root:
 ```sh
 docker-compose up -d
 ```
