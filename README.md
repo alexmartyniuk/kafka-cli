@@ -2,7 +2,9 @@
 
 Kafka Command Line Tool (kafka-cli) allows you to manage topics and produce/consume messages to/from Kafka cluster.
 
-Usage: kafka-cli [options] [command]
+Usage: 
+```sh
+kafka-cli [options] [command]
 
 Options:
   -?|-h|--help  Show help information
@@ -13,14 +15,15 @@ Commands:
   topic         Manage topics
 
 Run 'kafka-cli [command] --help' for more information about a command.
+```
 
 # How to run Kafka locally
 
-This quick start shows you how to get up and running with Kafka on your local laptop using Docker containers. After successfull run you will be able to push and consume events to/from Kafka. 
+This quick start shows you how to get up and running with Kafka server on your local laptop using Docker containers. After successfull run you will be able to push and consume events to/from Kafka. 
 
 ## Step 1 Configure Docker
 To proceed with this manual you need to have Docker Desktop installed version 1.11 or later. [Download Docker](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe)
-You need at least 4096 MB available for Docker to run Kafka. Change this in Advanced Settings of Docker Desktop. Also add Manual Proxy configuration if you are inside the Scania network: 
+You need at least 4096 MB available for Docker to run Kafka. Change this in Advanced Settings of Docker Desktop.
 
 ## Step 2 Run Kafka
 In the folder run from command line:
@@ -55,6 +58,8 @@ In this step, you create Kafka topics by using the Control Center. Control Cente
     > Topic name is case sensitive in Kafka
 4. On the *Messages* tab of the newly created topic you can see all messages in this topic. But the message browser shows messages that have arrived since this page was opened. So you need to open the page and after that generate messages to see them in the table.
 
+If all previous steps done well you have a running Kafka with Control Center Web UI.
+
 ## Step 4 Use Kafka Command Line Tool
 To install Kafka CLI (kafka-cli) run in command line:
 ```
@@ -64,7 +69,7 @@ Tool 'kafka-cli' (version '1.0.7') was successfully installed.
 ```
 The version can be different. It depends on the currently actual version of the tool.
 
-To configure broker host and timeout run:
+To configure the broker host and timeout run:
 ```
 kafka-cli config
 Current configuration:
@@ -79,7 +84,7 @@ To get all available topics in Kafka run:
 kafka-cli topic list
 ```
 
-To send message to the previously created topic run:
+To send message to a previously created topic run:
 ```
 kafka-cli message produce "Message" --topic TestTopic
 1 message delivered to TestTopic [[0]] @0
@@ -126,7 +131,7 @@ Don't forget to add using:
 using System.Threading.Tasks;
 using Confluent.Kafka;
 ```
-After run you should see the message in console:
+After running you should see the text message in console:
 ```
 dotnet run
 Delivered 'Hello World!' to 'TestTopic [[0]] @0'
@@ -190,7 +195,7 @@ Don't forget to add using:
 using System.Threading.Tasks;
 using Confluent.Kafka;
 ```
-After run you should see the message in console:
+After running you should see the message in console:
 ```
 dotnet run
 Consumed message 'Hello World!' at: 'TestTopic [[0]] @0'.
@@ -199,9 +204,6 @@ After that the application should stuck on line 32 and wait for a new message fr
 ```
 32: var cr = c.Consume(cts.Token);
 ```
-
-If all previous steps done well you have a running Kafka with Control Center Web UI.
-
 
 ## Step 7 Stop Kafka
 To stop Kafka you need to run in the folder with the docker-compose.yml:
