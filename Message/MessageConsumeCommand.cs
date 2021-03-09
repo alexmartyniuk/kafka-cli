@@ -10,8 +10,7 @@ namespace Kafka.Tool.Cli.Message
 {
 
     [Command("consume", Description = "Consume a message",
-            AllowArgumentSeparator = true,
-            ThrowOnUnexpectedArgument = false)]
+            AllowArgumentSeparator = true)]
     public class MessageConsumeCommand
     {
         [Required(ErrorMessage = "You must specify the topic")]

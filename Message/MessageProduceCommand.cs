@@ -8,9 +8,8 @@ using Kafka.Tool.Cli.Kafka;
 namespace Kafka.Tool.Cli.Message
 {
 
-    [Command("produce", Description = "Prodcue a message to the Kafka topic",
-            AllowArgumentSeparator = true,
-            ThrowOnUnexpectedArgument = false)]
+    [Command("produce", Description = "Produce a message to the Kafka topic",
+            AllowArgumentSeparator = true)]
     public class MessageProduceCommand
     {
         [Required(ErrorMessage = "You must specify the message")]

@@ -7,8 +7,7 @@ namespace Kafka.Tool.Cli.Topic
 {
 
     [Command("list", Description = "List add topics",
-            AllowArgumentSeparator = true,
-            ThrowOnUnexpectedArgument = false)]
+            AllowArgumentSeparator = true)]
     public class TopicListCommand
     {
         [Option("--filter|-f", Description = "Text that should be included in a topic name")]
